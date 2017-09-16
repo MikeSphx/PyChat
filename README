@@ -1,0 +1,32 @@
+Program Description:
+
+    This set of Python scripts use the Python Socket API in order to create a simple chat
+application protocol using UDP connections.
+
+    On the client script, a UDP socket connection is made and then the program splits into
+two threads. One thread is for listening for incoming messages from the server/other clients.
+The other thread is for accepting user input and sending commands out.
+
+    On the server script, a UDP socket connection is also made bound to the port specified.
+Everytime a new client signs-in, a packet is sent to all clients informing them of all of the
+clients connected to the server, including the clients' IP and PORT information. This is
+important for the client because the client will use this information to know where to send
+messages to.
+
+Requirements to run the program:
+
+    Python version: 2.7.x (Developed on the CCIS machines with Python version 2.7.5)
+    Python libraries imported: sys, os, argparse, socket, json, thread
+
+How to Run the Program:
+
+    1. cd into the project directory
+    2. Run the server script (python server.py -sp [PORT])
+    3. Repeatable step: Run the client script (python client.py -u [USER] -sip [SERVER-IP] -sp [PORT])
+        Note: Make sure the [PORT] chosen are the same for the client and server script
+    4. Use any of the following commands in your client terminals:
+        - list
+            - This command lists all signed-in users on the server
+        - send USERNAME MESSAGE
+            - This command sends a message to a specified user on the server
+    5. Once you are finished, Ctrl+C on each terminal to terminate the scripts
